@@ -1,0 +1,24 @@
+source "http://rubygems.org"
+
+gem "rails", "[RAILS_VERSION]"
+
+gem "[DATABASE]"
+
+gem "haml"
+gem "haml-rails"
+gem "compass"
+
+gem "exceptional"
+
+group :development, :test do
+  gem "rspec"
+  gem "rspec-rails"
+  gem "autotest"
+  gem "autotest-fsevent"
+  gem "autotest-growl"
+end
+
+group :development do
+  gem "heroku"
+end
+

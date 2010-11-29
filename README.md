@@ -20,7 +20,7 @@ If using MySQL, don't forget to add `-d mysql` to the end of the previous line.
 
 After a standard Rails 3 project is created, `base.rb` is executed.
 
-All files in the `template` directory - *except those that begin with . (dot)* - are copied into the new project, overwriting original files when conflicts occur.
+All files in the `template` directory that match `*.*` are copied into the new project, overwriting original files when conflicts occur.
 
 ## vhost.rb - delete this or replace it with your own virtual host setup script
 
