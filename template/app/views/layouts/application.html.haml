@@ -1,0 +1,10 @@
+!!! 5
+- html_tag :lang => "en" do
+  = render :partial => "layouts/head"
+  %body
+    #container
+      #header
+      #main= yield
+      #footer
+    -# Javascript at the bottom for fast page loading
+    = render :partial => "layouts/javascripts"

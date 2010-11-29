@@ -1,0 +1,13 @@
+@import compass/utilities/text/replacement
+
+= ir($img)
+  +replace-text-with-dimensions($img)
+
+= bg($img)
+  background: image-url($img) top left no-repeat
+
+= submit($img)
+  +ir($img)
+  padding: 0px
+  border: 0px
+  background-color: transparent
