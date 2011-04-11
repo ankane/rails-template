@@ -7,8 +7,6 @@ gem "[DATABASE]"
 gem "haml"
 gem "compass"
 
-gem "exceptional"
-
 group :development, :test do
   gem "rspec"
   gem "rspec-rails"
@@ -21,4 +19,3 @@ group :development do
   gem "haml-rails"
   gem "katana"
 end
-
