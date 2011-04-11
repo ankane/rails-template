@@ -4,7 +4,7 @@ A Rails template that includes rspec, autotest, exceptional, haml, compass, and 
 
 Some views, stylesheets, and helper functions were forked from https://github.com/sporkd/compass-html5-boilerplate.
 
-## Fork this project so you can personalize it!
+## Fork this project so you can personalize it
 
 Then, clone the fork to your development machine.
 
@@ -12,9 +12,7 @@ Then, clone the fork to your development machine.
 
 To create a new project with your template, run:
 
-    rails new app-name --template=/path/to/rails-template/base.rb
-
-If using MySQL, don't forget to add `-d mysql` to the end of the previous line.
+    rails new app-name -d mysql -m /path/to/rails-template/base.rb
 
 ## How it works
 
@@ -22,8 +20,32 @@ After a standard Rails 3 project is created, `base.rb` is executed.
 
 All files in the `template` directory that match `*.*` are copied into the new project, overwriting original files when conflicts occur.
 
-## vhost.rb - delete this or replace it with your own virtual host setup script
+## Install more gems
 
-Creates a virtual host for nginx.
+### Exceptional
 
-    sudo ruby vhost.rb app-name development-host
+Add to Gemfile
+
+    gem "exceptional"
+
+Run
+
+    exceptional install API-KEY
+    exceptional test
+
+### Devise
+
+Add to Gemfile
+
+    gem "devise"
+
+Add to development group in Gemfile
+
+    gem "erb2haml"
+
+Run
+
+    rails g devise:install
+    rails g devise User
+    rails g devise:views -e erb
+    rake haml:convert_erbs
