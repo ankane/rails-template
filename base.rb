@@ -1,4 +1,4 @@
-exceptional_key = ask("Exceptional API key:")
+exceptional_key = ask "Exceptional API key:"
 exceptional = !exceptional_key.blank?
 
 # get rails version and database adapter
@@ -18,7 +18,8 @@ rails_version = matches[1]
 database = matches[2]
 
 # add source dir
-source_dir = "#{File.dirname(__FILE__)}/template"
+base_dir = File.dirname(__FILE__)
+source_dir = "#{base_dir}/template"
 source_paths.unshift(source_dir)
 
 template "Gemfile", :force => true
@@ -37,14 +38,14 @@ end
 # heroku
 gsub_file "config/environments/production.rb", "config.serve_static_assets = false", "config.serve_static_assets = true"
 
-run "bundle update", :capture => true
+apply "#{base_dir}/_rvm.rb"
 
 if exceptional
   run "exceptional install #{exceptional_key}"
   run "exceptional test"
 end
 
-run "compass init rails --sass-dir app/stylesheets --css-dir public/stylesheets --prepare", :capture => true
+run "compass init rails --sass-dir app/stylesheets --css-dir tmp/stylesheets --prepare", :capture => true
 
 # remove unnecessary files
 run "rm public/index.html"
@@ -75,8 +76,7 @@ files.each do |f|
   template f, :force => true
 end
 
-run "rake -s db:create"
-run "rake -s db:migrate"
+run "rake -s db:create && rake -s db:migrate", :capture => true
 
 # git
 git :init => "-q"
