@@ -4,8 +4,15 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
 
-  def action_stylesheet
-    stylesheet_link_tag "#{controller.controller_name}/#{controller.action_name}" if File.exists?("#{Rails.root}/public/stylesheets/#{controller.controller_name}/#{controller.action_name}.css")
+  def controller_stylesheet
+    stylesheet_link_tag controller.controller_name if File.exists? "#{Rails.root}/app/stylesheets/#{controller.controller_name}.scss"
+  end
+
+  def jquery_tag(version = "1.5.2")
+    %Q!
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/#{version}/jquery.min.js"></script>
+    <script>\!window.jQuery && document.write(unescape('%3Cscript src=\"/javascripts/jquery-#{version}.min.js\"%3E%3C/script%3E'))</script>
+    !.html_safe
   end
 
   # Create a named haml tag to wrap IE conditional around a block
