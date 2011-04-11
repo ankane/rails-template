@@ -5,7 +5,6 @@ gem "rails", "[RAILS_VERSION]"
 gem "[DATABASE]"
 
 gem "haml"
-gem "haml-rails"
 gem "compass"
 
 gem "exceptional"
@@ -19,6 +18,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "heroku"
+  gem "haml-rails"
+  gem "katana"
 end
 
