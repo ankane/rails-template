@@ -49,3 +49,4 @@ Run
     rails g devise User
     rails g devise:views -e erb
     rake haml:convert_erbs
+    rm app/views/devise/**/*.erb
